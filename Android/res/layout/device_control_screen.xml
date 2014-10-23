@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+     Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:orientation="vertical">
+
+    <!-- This is the textboxes-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_device_address"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:id="@+id/device_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <View style="@style/DataFiller"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/caption_errors"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_state"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:id="@+id/connection_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disconnected"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <View style="@style/DataFiller"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/txtErrorCount"
+                android:text="0"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Separator"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:text="@string/caption_stream"
+            android:id="@+id/switchStreaming"
+            android:switchPadding="10sp"/>
+
+        <View style="@style/DataFiller"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:text="@string/caption_logging"
+            android:id="@+id/switchLogging"
+            android:switchPadding="10sp"/>
+
+    </LinearLayout>
+
+    <View style="@style/Separator"/>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <Switch
+        android:id="@+id/led_control_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:layout_weight="0"
+        android:text="@string/led_control_switch_name"/>
+
+        <View style="@style/DataFiller"/>
+
+        <RadioGroup
+        android:id="@+id/rg_led_color"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/rb_green"
+        android:enabled="false"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/color_green"/>
+
+        <RadioButton
+            android:id="@+id/rb_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/color_red"/>
+    </RadioGroup>
+    </LinearLayout>
+
+    <View style="@style/Separator"/>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_firmware"
+            android:layout_marginRight="10sp"/>
+
+        <TextView
+            style="@style/DataCaption"
+            android:id="@+id/txtFirmware"/>
+
+        <View style="@style/DataFiller"/>
+
+        <Button
+            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:text="@string/caption_get"
+            android:onClick="btnGetFirmware_onclick"/>
+    </LinearLayout>
+
+    <View style="@style/Separator"/>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_battery_voltage"
+            android:layout_marginRight="5sp"/>
+
+        <TextView
+            style="@style/DataCaption"
+            android:id="@+id/txtBatteryVolts"
+            android:layout_width="50sp"/>
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_charge"
+            android:layout_marginRight="5sp"/>
+
+        <TextView
+            style="@style/DataCaption"
+            android:id="@+id/txtChargeState"/>
+
+        <View style="@style/DataFiller"/>
+
+        <Button
+            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:text="@string/caption_get"
+            android:onClick="btnGetStatus_click"/>
+    </LinearLayout>
+
+
+    <View style="@style/Separator"/>
+
+    <!-- DateTime -->
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/datetime_caption"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            android:id="@+id/txtDateTime"
+            style="@style/DataItem"
+            android:layout_width="200sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_timestamp"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtTimestamp"/>
+    </LinearLayout>
+
+    <!--
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_rssi"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtRssi"/>
+    </LinearLayout> -->
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_battery"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtBattery"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_pressure"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtPressure"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_temperature"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtTemperature"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_gyros"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_xaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtGyrosX"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_yaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtGyrosY"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_zaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtGyrosZ"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_accels"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_xaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtAccelsX"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_yaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtAccelsY"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_zaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtAccelsZ"/>
+    </LinearLayout>
+
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_compass"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_xaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtCompX"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_yaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtCompY"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_zaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtCompZ"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_linear"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_xaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtLinAccX"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_yaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtLinAccY"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_zaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtLinAccZ"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_euler"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_xaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtEulerX"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_yaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtEulerY"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_zaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:id="@+id/txtEulerZ"/>
+    </LinearLayout>
+    <LinearLayout style="@style/DataLayout">
+
+        <TextView
+            style="@style/DataCaption"
+            android:text="@string/caption_quaternion"
+            android:layout_marginRight="5dp"/>
+
+        <View style="@style/DataFiller"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_waxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:layout_width="60sp"
+            android:id="@+id/txtQuatW"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_xaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:layout_width="60sp"
+            android:id="@+id/txtQuatX"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_yaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:layout_width="60sp"
+            android:id="@+id/txtQuatY"/>
+
+        <TextView
+            style="@style/DataItemCaption"
+            android:text="@string/caption_zaxis"/>
+
+        <TextView
+            style="@style/DataItem"
+            android:layout_width="60sp"
+            android:id="@+id/txtQuatZ"/>
+    </LinearLayout>
+</LinearLayout>
